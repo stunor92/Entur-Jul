@@ -1,3 +1,5 @@
+@import '@entur/travel/dist/styles.css';
+@import '@entur/icons/dist/styles.css';
 :root {
   /* Entur official color palette */
   --entur-blue: #181C56;
@@ -31,31 +33,10 @@ body {
   background: var(--entur-bg);
 }
 
-/* Entur Header */
-.entur-header {
-  background: var(--entur-white);
-  border-bottom: 1px solid #E0E0E0;
-  padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
 
-.header-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
 
 .entur-logo {
   color: var(--entur-blue);
-}
-
-.header-title {
-  color: var(--entur-blue);
-  font-size: 2rem;
-  font-weight: 700;
 }
 
 .container {
@@ -64,31 +45,42 @@ body {
   margin: 0 auto;
   padding: 32px 20px;
 }
+.journey-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 100px 50px 16px;
+}
+
+.journey-timespan {
+    display: flex;
+    flex-direction: column;
+}
+
+.timespan-spacer {
+    flex: 1;
+}
+
+.journey-spacer {
+    display: block;
+    height: 100px;
+}
 
 .journey-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 /* Journey Header */
 .journey-header {
-  background: var(--entur-white);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.station {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.station-name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--entur-dark-gray);
+    background: var(--entur-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 50px 16px;
 }
 
 /* Journey Card */
@@ -97,15 +89,24 @@ body {
   border-radius: 12px;
   padding: 32px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .journey-summary {
+  width: 100%;
   margin-bottom: 32px;
   padding-bottom: 24px;
   border-bottom: 2px solid var(--entur-light-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .summary-time {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -143,30 +144,11 @@ body {
   font-weight: 500;
 }
 
-.countdown-mini {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--entur-blue);
-}
 
-.countdown-number {
-  font-variant-numeric: tabular-nums;
-}
 
-.countdown-unit {
-  font-size: 0.875rem;
-  color: var(--entur-gray);
-  margin-right: 4px;
-}
 
-.countdown-separator {
-  color: var(--entur-gray);
-  margin: 0 4px;
-}
+
+
 
 /* Leg Details */
 .leg-details {
@@ -229,7 +211,7 @@ body {
 }
 
 .journey-leg {
-  min-height: 200px;
+  height: 500px;
 }
 
 .leg-info {
@@ -270,42 +252,26 @@ body {
 }
 
 /* Countdown Banner */
-.countdown-banner {
-  background: linear-gradient(135deg, var(--entur-blue), var(--entur-light-blue));
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: var(--entur-white);
+.countdown {
+    color: var(--entur-red);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 100px 50px 16px;
 }
 
-.countdown-content {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-bottom: 24px;
-}
+
 
 .banner-icon {
   color: var(--entur-white);
   flex-shrink: 0;
 }
 
-.countdown-info {
-  flex: 1;
-}
 
-.countdown-info h2 {
-  color: var(--entur-white);
-  font-size: 1.75rem;
-  margin-bottom: 20px;
-}
 
-.countdown-display {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-}
+
 
 .time-unit {
   display: flex;
@@ -325,7 +291,6 @@ body {
   line-height: 1;
   margin-bottom: 4px;
   font-variant-numeric: tabular-nums;
-  color: var(--entur-white);
 }
 
 .label {
@@ -334,13 +299,11 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   opacity: 0.9;
-  color: var(--entur-white);
 }
 
 .separator {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--entur-white);
   opacity: 0.8;
 }
 
@@ -352,26 +315,12 @@ body {
 .journey-message p {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--entur-white);
 }
 
 .urgent-message {
   animation: pulse 1.5s ease-in-out infinite;
 }
 
-.christmas-banner {
-  background: linear-gradient(135deg, var(--entur-green), var(--entur-light-blue));
-  border-radius: 12px;
-  padding: 48px 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-
-.christmas-banner h1 {
-  font-size: 2.5rem;
-  color: var(--entur-white);
-  animation: celebration 1s ease-in-out infinite;
-}
 
 /* Action Buttons */
 .action-buttons {
@@ -465,14 +414,8 @@ body {
     flex-direction: column;
   }
 
-  .countdown-content {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .countdown-display {
-    justify-content: center;
-  }
+
 
   .time-unit {
     min-width: 70px;
@@ -514,10 +457,6 @@ body {
   .departure-time,
   .arrival-time {
     font-size: 2rem;
-  }
-
-  .countdown-info h2 {
-    font-size: 1.5rem;
   }
 
   .time-unit {
