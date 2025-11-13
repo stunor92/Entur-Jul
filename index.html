@@ -3,46 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nedtelling til Julaften - Entur</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Polar Express til Julaften - Entur</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="title">Nedtelling til Julaften</h1>
-            <p class="subtitle">Entur kontor</p>
-        </header>
-        
-        <main class="countdown-container">
-            <div class="countdown-display">
-                <div class="time-unit">
-                    <span class="number" id="days">0</span>
-                    <span class="label">dager</span>
-                </div>
-                <div class="time-unit">
-                    <span class="number" id="hours">0</span>
-                    <span class="label">timer</span>
-                </div>
-                <div class="time-unit">
-                    <span class="number" id="minutes">0</span>
-                    <span class="label">minutter</span>
-                </div>
-                <div class="time-unit">
-                    <span class="number" id="seconds">0</span>
-                    <span class="label">sekunder</span>
-                </div>
-            </div>
-            
-            <div class="christmas-message" id="message">
-                <p class="message-text"></p>
-            </div>
-        </main>
-        
-        <footer>
-            <p class="footer-text">God jul fra Entur! 🎄</p>
-        </footer>
-    </div>
-    
-    <script src="script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
