@@ -1,0 +1,220 @@
+/* Entur Design System inspired styles */
+
+:root {
+    /* Entur color palette */
+    --entur-blue: #181C56;
+    --entur-light-blue: #0B79BE;
+    --entur-green: #6FB536;
+    --entur-red: #E60000;
+    --entur-white: #FFFFFF;
+    --entur-light-gray: #F3F3F3;
+    --entur-gray: #6A6A6A;
+    --entur-dark-gray: #333333;
+    
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--entur-blue) 0%, var(--entur-light-blue) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--entur-white);
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 60px;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.countdown-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.countdown-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.time-unit:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.number {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+.label {
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.christmas-message {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-text {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    animation: fadeIn 1s ease-in;
+}
+
+.message-text.celebration {
+    font-size: 2.5rem;
+    color: var(--entur-green);
+    animation: celebration 1s ease-in-out infinite;
+}
+
+footer {
+    margin-top: 60px;
+}
+
+.footer-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes celebration {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .countdown-container {
+        padding: 40px 20px;
+    }
+    
+    .countdown-display {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .number {
+        font-size: 3rem;
+    }
+    
+    .label {
+        font-size: 1rem;
+    }
+    
+    .message-text {
+        font-size: 1.5rem;
+    }
+    
+    .message-text.celebration {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .countdown-container {
+        padding: 30px 15px;
+    }
+    
+    .time-unit {
+        padding: 20px 10px;
+    }
+    
+    .number {
+        font-size: 2.5rem;
+    }
+    
+    .label {
+        font-size: 0.875rem;
+    }
+}
