@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { TravelHeader, TravelLeg, LegLine } from '@entur/travel';
-import { Heading1, Paragraph } from '@entur/typography';
+import { TravelHeader, TravelLeg, TravelTag } from '@entur/travel';
+import { Heading1, Heading2, Heading3, Paragraph, Label } from '@entur/typography';
+import { NavigationCard } from '@entur/layout';
+import { PrimaryButton, SecondaryButton } from '@entur/button';
+import { 
+  TrainIcon, 
+  ClockIcon, 
+  CalendarIcon, 
+  WifiIcon,
+  CoffeeIcon,
+  ToiletIcon,
+  LogoPositiveIcon
+} from '@entur/icons';
 import './App.css';
 
 function App() {
@@ -73,85 +84,152 @@ function App() {
 
   return (
     <div className="app">
-      <div className="container">
-        <header className="header">
-          <Heading1 className="main-title">🎄 Julereisen 2025 🎅</Heading1>
-          <Paragraph className="subtitle">
-            Polar Express avgår snart til julaften!
-          </Paragraph>
-        </header>
+      <div className="entur-header">
+        <div className="header-content">
+          <LogoPositiveIcon className="entur-logo" size={120} />
+          <Heading2 className="header-title">Julereise 2025</Heading2>
+        </div>
+      </div>
 
-        <main className="main-content">
-          {/* Travel Journey Display */}
-          <div className="travel-card">
+      <div className="container">
+        <div className="journey-container">
+          {/* Journey Header */}
+          <div className="journey-header">
             <TravelHeader
               from={
                 <div className="station">
-                  <span className="station-icon">🏢</span>
                   <span className="station-name">Entur Kontor</span>
                 </div>
               }
               to={
                 <div className="station">
-                  <span className="station-icon">🎄</span>
                   <span className="station-name">Julaften</span>
                 </div>
               }
               size="large"
             />
-            
-            <div className="travel-leg-container">
-              <div className="leg-content">
-                <TravelLeg transport="train" direction="vertical" />
-                <div className="train-info">
-                  <div className="train-header">
-                    <span className="train-icon">🚂</span>
-                    <span className="train-name">Polar Express</span>
+          </div>
+
+          {/* Main Journey Card */}
+          <div className="journey-card">
+            <div className="journey-summary">
+              <div className="summary-time">
+                <div className="time-block">
+                  <Heading1 className="departure-time">00:00</Heading1>
+                  <Paragraph className="time-label">24. des 2025</Paragraph>
+                </div>
+                <div className="duration-block">
+                  <Paragraph className="duration-label">Reisetid</Paragraph>
+                  <div className="countdown-mini">
+                    <span className="countdown-number">{String(timeLeft.days).padStart(2, '0')}</span>
+                    <span className="countdown-unit">d</span>
+                    <span className="countdown-separator">:</span>
+                    <span className="countdown-number">{String(timeLeft.hours).padStart(2, '0')}</span>
+                    <span className="countdown-unit">t</span>
+                    <span className="countdown-separator">:</span>
+                    <span className="countdown-number">{String(timeLeft.minutes).padStart(2, '0')}</span>
+                    <span className="countdown-unit">m</span>
                   </div>
-                  <div className="train-details">
-                    <div className="detail-row">
-                      <span className="detail-label">Avgang:</span>
-                      <span className="detail-value">{formatTime(departureDate)}</span>
+                </div>
+                <div className="time-block">
+                  <Heading1 className="arrival-time">00:00</Heading1>
+                  <Paragraph className="time-label">24. des 2025</Paragraph>
+                </div>
+              </div>
+            </div>
+
+            {/* Travel Leg Details */}
+            <div className="leg-details">
+              <div className="leg-timeline">
+                <div className="leg-point start-point">
+                  <div className="point-marker"></div>
+                  <div className="point-info">
+                    <Heading3>Entur Kontor</Heading3>
+                    <Paragraph className="point-time">
+                      <ClockIcon inline size={16} /> 00:00
+                    </Paragraph>
+                    <Paragraph className="platform">Platform: Julekontoret 🏢</Paragraph>
+                  </div>
+                </div>
+
+                <div className="leg-line-container">
+                  <TravelLeg transport="train" direction="vertical" className="journey-leg" />
+                  <div className="leg-info">
+                    <TravelTag 
+                      transport="train" 
+                      details="Polar Express"
+                      label="Direktetog"
+                      labelPlacement="right"
+                    >
+                      <div className="train-details-tag">
+                        <TrainIcon size={24} />
+                        <span className="train-name">Polar Express</span>
+                      </div>
+                    </TravelTag>
+                    
+                    <div className="amenities">
+                      <div className="amenity-item">
+                        <WifiIcon size={20} />
+                        <span>WiFi</span>
+                      </div>
+                      <div className="amenity-item">
+                        <CoffeeIcon size={20} />
+                        <span>Kafé</span>
+                      </div>
+                      <div className="amenity-item">
+                        <ToiletIcon size={20} />
+                        <span>Toalett</span>
+                      </div>
                     </div>
-                    <div className="detail-row">
-                      <span className="detail-label">Platform:</span>
-                      <span className="detail-value">Nordpolen 🎅</span>
-                    </div>
+                  </div>
+                </div>
+
+                <div className="leg-point end-point">
+                  <div className="point-marker"></div>
+                  <div className="point-info">
+                    <Heading3>Julaften</Heading3>
+                    <Paragraph className="point-time">
+                      <ClockIcon inline size={16} /> 00:00
+                    </Paragraph>
+                    <Paragraph className="platform">Platform: Nordpolen 🎅</Paragraph>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Countdown Display */}
+          {/* Countdown Banner */}
           {!isChristmasEve ? (
-            <div className="countdown-card">
-              <Heading1 className="countdown-title">
-                Nedtelling til avgang
-              </Heading1>
-              <div className="countdown-display">
-                <div className="time-unit">
-                  <span className="number">{String(timeLeft.days).padStart(2, '0')}</span>
-                  <span className="label">dager</span>
-                </div>
-                <div className="time-separator">:</div>
-                <div className="time-unit">
-                  <span className="number">{String(timeLeft.hours).padStart(2, '0')}</span>
-                  <span className="label">timer</span>
-                </div>
-                <div className="time-separator">:</div>
-                <div className="time-unit">
-                  <span className="number">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                  <span className="label">minutter</span>
-                </div>
-                <div className="time-separator">:</div>
-                <div className="time-unit">
-                  <span className="number">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                  <span className="label">sekunder</span>
+            <div className="countdown-banner">
+              <div className="countdown-content">
+                <CalendarIcon size={32} className="banner-icon" />
+                <div className="countdown-info">
+                  <Heading2>Nedtelling til avgang</Heading2>
+                  <div className="countdown-display">
+                    <div className="time-unit">
+                      <span className="number">{String(timeLeft.days).padStart(2, '0')}</span>
+                      <span className="label">dager</span>
+                    </div>
+                    <span className="separator">:</span>
+                    <div className="time-unit">
+                      <span className="number">{String(timeLeft.hours).padStart(2, '0')}</span>
+                      <span className="label">timer</span>
+                    </div>
+                    <span className="separator">:</span>
+                    <div className="time-unit">
+                      <span className="number">{String(timeLeft.minutes).padStart(2, '0')}</span>
+                      <span className="label">minutter</span>
+                    </div>
+                    <span className="separator">:</span>
+                    <div className="time-unit">
+                      <span className="number">{String(timeLeft.seconds).padStart(2, '0')}</span>
+                      <span className="label">sekunder</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="message">
+              <div className="journey-message">
                 {timeLeft.days === 0 && timeLeft.hours < 1 ? (
                   <Paragraph className="urgent-message">
                     🎅 Polar Express avgår snart! Kom deg ombord! 🎄
@@ -172,14 +250,45 @@ function App() {
               </div>
             </div>
           ) : (
-            <div className="christmas-message">
+            <div className="christmas-banner">
               <Heading1>🎄 God jul! Toget har avgått! 🎅</Heading1>
             </div>
           )}
-        </main>
+
+          {/* Action Buttons */}
+          <div className="action-buttons">
+            <PrimaryButton className="book-button">
+              Bestill billett til Polar Express
+            </PrimaryButton>
+            <SecondaryButton className="share-button">
+              Del reise
+            </SecondaryButton>
+          </div>
+
+          {/* Journey Info Cards */}
+          <div className="info-cards">
+            <NavigationCard
+              title="Om Polar Express"
+              titleIcon={<TrainIcon size={24} />}
+              className="info-card"
+            >
+              En magisk reise fra Entur kontor til julaften. Nyt komfort, 
+              god mat og drikke mens du glir avgårde mot julens under.
+            </NavigationCard>
+            
+            <NavigationCard
+              title="Hva du trenger"
+              titleIcon={<CalendarIcon size={24} />}
+              className="info-card"
+            >
+              Husk å ta med julekosekort, pakkekort og mange smil! 
+              Billetten er gyldig for alle med julestemning.
+            </NavigationCard>
+          </div>
+        </div>
 
         <footer className="footer">
-          <Paragraph>God jul fra Entur! 🎄✨</Paragraph>
+          <Paragraph>Entur AS · Juletog 2025 · God jul! 🎄✨</Paragraph>
         </footer>
       </div>
     </div>

@@ -1,13 +1,14 @@
 :root {
-  /* Entur color palette */
+  /* Entur official color palette */
   --entur-blue: #181C56;
   --entur-light-blue: #0B79BE;
   --entur-green: #6FB536;
   --entur-red: #E60000;
   --entur-white: #FFFFFF;
   --entur-light-gray: #F3F3F3;
-  --entur-gray: #6A6A6A;
-  --entur-dark-gray: #333333;
+  --entur-gray: #8C8C8C;
+  --entur-dark-gray: #2E2E2E;
+  --entur-bg: #F8F9FA;
 }
 
 * {
@@ -22,168 +23,287 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  background: var(--entur-bg);
 }
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--entur-blue) 0%, var(--entur-light-blue) 100%);
-  color: var(--entur-white);
-  padding: 20px;
+  background: var(--entur-bg);
+}
+
+/* Entur Header */
+.entur-header {
+  background: var(--entur-white);
+  border-bottom: 1px solid #E0E0E0;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 24px;
+}
+
+.entur-logo {
+  color: var(--entur-blue);
+}
+
+.header-title {
+  color: var(--entur-blue);
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .container {
   width: 100%;
   max-width: 900px;
-  text-align: center;
+  margin: 0 auto;
+  padding: 32px 20px;
 }
 
-.header {
-  margin-bottom: 40px;
-}
-
-.main-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: var(--entur-white);
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  opacity: 0.9;
-  color: var(--entur-white);
-}
-
-.main-content {
+.journey-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
 }
 
-/* Travel Card Styles */
-.travel-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  color: var(--entur-dark-gray);
+/* Journey Header */
+.journey-header {
+  background: var(--entur-white);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .station {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.station-icon {
-  font-size: 2rem;
 }
 
 .station-name {
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--entur-dark-gray);
 }
 
-.travel-leg-container {
-  margin: 24px 0;
-  display: flex;
-  justify-content: center;
-}
-
-.leg-content {
-  display: flex;
-  align-items: stretch;
-  gap: 24px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.train-info {
-  flex: 1;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.train-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: linear-gradient(135deg, var(--entur-blue), var(--entur-light-blue));
+/* Journey Card */
+.journey-card {
+  background: var(--entur-white);
   border-radius: 12px;
-  color: white;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.train-icon {
-  font-size: 2rem;
+.journey-summary {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--entur-light-gray);
 }
 
-.train-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.train-details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  background: var(--entur-light-gray);
-  border-radius: 12px;
-}
-
-.detail-row {
+.summary-time {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  gap: 24px;
 }
 
-.detail-row:last-child {
-  border-bottom: none;
+.time-block {
+  text-align: center;
 }
 
-.detail-label {
-  font-weight: 600;
-  color: var(--entur-gray);
-}
-
-.detail-value {
+.departure-time,
+.arrival-time {
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--entur-blue);
-  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
 
-/* Countdown Card Styles */
-.countdown-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.time-label {
+  color: var(--entur-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-.countdown-title {
-  font-size: 2rem;
-  margin-bottom: 32px;
+.duration-block {
+  flex: 1;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.duration-label {
+  color: var(--entur-gray);
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.countdown-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--entur-blue);
+}
+
+.countdown-number {
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-unit {
+  font-size: 0.875rem;
+  color: var(--entur-gray);
+  margin-right: 4px;
+}
+
+.countdown-separator {
+  color: var(--entur-gray);
+  margin: 0 4px;
+}
+
+/* Leg Details */
+.leg-details {
+  margin-top: 24px;
+}
+
+.leg-timeline {
+  position: relative;
+}
+
+.leg-point {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.point-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--entur-blue);
+  border: 3px solid var(--entur-white);
+  box-shadow: 0 0 0 2px var(--entur-blue);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.point-info {
+  flex: 1;
+}
+
+.point-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--entur-dark-gray);
+  margin-bottom: 8px;
+}
+
+.point-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--entur-gray);
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.platform {
+  color: var(--entur-gray);
+  font-size: 0.875rem;
+}
+
+.leg-line-container {
+  display: flex;
+  gap: 20px;
+  margin: 16px 0;
+  position: relative;
+}
+
+.journey-leg {
+  min-height: 200px;
+}
+
+.leg-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.train-details-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.train-name {
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.amenities {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  background: var(--entur-light-gray);
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--entur-dark-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Countdown Banner */
+.countdown-banner {
+  background: linear-gradient(135deg, var(--entur-blue), var(--entur-light-blue));
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   color: var(--entur-white);
+}
+
+.countdown-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.banner-icon {
+  color: var(--entur-white);
+  flex-shrink: 0;
+}
+
+.countdown-info {
+  flex: 1;
+}
+
+.countdown-info h2 {
+  color: var(--entur-white);
+  font-size: 1.75rem;
+  margin-bottom: 20px;
 }
 
 .countdown-display {
   display: flex;
-  justify-content: center;
+  gap: 12px;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
   flex-wrap: wrap;
 }
 
@@ -192,49 +312,45 @@ body {
   flex-direction: column;
   align-items: center;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 24px 20px;
-  min-width: 100px;
+  border-radius: 8px;
+  padding: 16px 20px;
+  min-width: 80px;
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.time-unit:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.time-separator {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--entur-white);
-  opacity: 0.8;
 }
 
 .number {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-variant-numeric: tabular-nums;
   color: var(--entur-white);
 }
 
 .label {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   opacity: 0.9;
   color: var(--entur-white);
 }
 
-.message {
+.separator {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--entur-white);
+  opacity: 0.8;
+}
+
+.journey-message {
+  text-align: center;
   margin-top: 24px;
 }
 
-.message p {
-  font-size: 1.5rem;
+.journey-message p {
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--entur-white);
 }
@@ -243,29 +359,59 @@ body {
   animation: pulse 1.5s ease-in-out infinite;
 }
 
-.christmas-message {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 60px 40px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.christmas-banner {
+  background: linear-gradient(135deg, var(--entur-green), var(--entur-light-blue));
+  border-radius: 12px;
+  padding: 48px 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
 
-.christmas-message h1 {
+.christmas-banner h1 {
   font-size: 2.5rem;
   color: var(--entur-white);
   animation: celebration 1s ease-in-out infinite;
 }
 
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.book-button,
+.share-button {
+  flex: 1;
+  min-width: 200px;
+  padding: 16px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Info Cards */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.info-card {
+  background: var(--entur-white);
+  border: 1px solid #E0E0E0;
+}
+
+/* Footer */
 .footer {
-  margin-top: 40px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #E0E0E0;
+  text-align: center;
 }
 
 .footer p {
-  font-size: 1.25rem;
-  opacity: 0.8;
-  color: var(--entur-white);
+  color: var(--entur-gray);
+  font-size: 0.875rem;
 }
 
 /* Animations */
@@ -289,79 +435,101 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .main-title {
-    font-size: 2rem;
+  .header-title {
+    font-size: 1.5rem;
   }
-  
-  .subtitle {
+
+  .entur-logo {
+    width: 80px;
+  }
+
+  .journey-card {
+    padding: 20px;
+  }
+
+  .summary-time {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .duration-block {
+    padding: 16px 0;
+    order: -1;
+  }
+
+  .countdown-mini {
     font-size: 1.25rem;
   }
-  
-  .travel-card {
-    padding: 24px 16px;
-  }
-  
-  .leg-content {
+
+  .leg-line-container {
     flex-direction: column;
   }
-  
+
+  .countdown-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
   .countdown-display {
-    gap: 12px;
+    justify-content: center;
   }
-  
+
   .time-unit {
-    min-width: 80px;
-    padding: 16px 12px;
+    min-width: 70px;
+    padding: 12px 16px;
   }
-  
+
   .number {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
-  
-  .time-separator {
-    font-size: 2rem;
+
+  .action-buttons {
+    flex-direction: column;
   }
-  
-  .station {
-    font-size: 1rem;
+
+  .book-button,
+  .share-button {
+    width: 100%;
   }
-  
-  .station-icon {
-    font-size: 1.5rem;
+
+  .info-cards {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .main-title {
-    font-size: 1.75rem;
+  .header-content {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .subtitle {
-    font-size: 1rem;
-  }
-  
-  .countdown-card {
-    padding: 24px 16px;
-  }
-  
-  .time-unit {
-    min-width: 70px;
-    padding: 12px 8px;
-  }
-  
-  .number {
-    font-size: 2rem;
-  }
-  
-  .label {
-    font-size: 0.875rem;
-  }
-  
-  .train-name {
+
+  .header-title {
     font-size: 1.25rem;
   }
-  
-  .detail-value {
-    font-size: 0.9rem;
+
+  .station-name {
+    font-size: 1.25rem;
+  }
+
+  .departure-time,
+  .arrival-time {
+    font-size: 2rem;
+  }
+
+  .countdown-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .time-unit {
+    min-width: 60px;
+    padding: 10px 12px;
+  }
+
+  .number {
+    font-size: 1.5rem;
+  }
+
+  .label {
+    font-size: 0.625rem;
   }
 }
