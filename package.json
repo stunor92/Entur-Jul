@@ -1,5 +1,5 @@
 {
-  "name": "entur---jul",
+  "name": "entur-jul",
   "version": "1.0.0",
   "description": "Website that shows countdown until chrismas",
   "main": "script.js",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.1",
+    "gh-pages": "^6.3.0",
     "vite": "^7.2.2"
   }
 }

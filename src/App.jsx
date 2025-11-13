@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { TravelHeader, TravelLeg, TravelTag } from '@entur/travel';
-import {Heading1, Heading2, Heading3, Paragraph, Label, SubLabel} from '@entur/typography';
+import {Heading1, Heading3, Paragraph, Label, SubLabel} from '@entur/typography';
 import {Contrast, NavigationCard} from '@entur/layout';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
 import {
-  TrainIcon,
-  ClockIcon,
-  CalendarIcon,
-  WifiIcon,
-  CoffeeIcon,
-  ToiletIcon,
+    TrainIcon,
+    CalendarIcon,
+    WifiIcon,
+    CoffeeIcon,
+    ToiletIcon, CutleryIcon,
 } from '@entur/icons';
-import { useContrast } from '@entur/layout';
-
+import { RadioGroup, RadioPanel } from '@entur/form';
 import './App.css';
 import citySvg from './city.svg';
 import clock from './clock.svg';
+import ticketSvg from './ticket.svg';
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({
@@ -25,6 +24,7 @@ function App() {
     seconds: 0
   });
   const [isChristmasEve, setIsChristmasEve] = useState(false);
+  const [value, setValue] = useState('non-flexi');
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -88,7 +88,7 @@ function App() {
   return (
     <div className="app">
         <Contrast className="journey-header">
-          <TravelHeader size="large" from="🧑‍💻Kontoret" to="Julaften 🎄"></TravelHeader>
+          <TravelHeader size="large" from="🧑‍💻 Kontoret" to="Julaften 🎄"></TravelHeader>
           <img src={citySvg} alt="City skyline" className="city-illustration" />
         </Contrast>
 
@@ -125,11 +125,7 @@ function App() {
             <TravelLeg transport="train" direction="vertical" className="journey-leg" />
             <div className="journey-timespan">
                 <div className="point-info">
-                    <Heading3>Entur Kontor</Heading3>
-                    <Paragraph className="point-time">
-                        <ClockIcon inline size={16} /> 00:00
-                    </Paragraph>
-                    <Paragraph className="platform">Platform: Julekontoret 🏢</Paragraph>
+                    <Heading3>‍💻 Kontoret</Heading3>
                 </div>
 
                 <span className="journey-spacer"/>
@@ -144,11 +140,15 @@ function App() {
                         </div>
                         <div className="amenity-item">
                             <CoffeeIcon size={20} />
-                            <span>Kafé</span>
+                            <span>Kaffe</span>
                         </div>
                         <div className="amenity-item">
                             <ToiletIcon size={20} />
                             <span>Toalett</span>
+                        </div>
+                        <div className="amenity-item">
+                            <CutleryIcon size={20} />
+                            <span>Julebord</span>
                         </div>
                     </div>
                 </div>
@@ -158,11 +158,7 @@ function App() {
 
                 <div className="point-info">
 
-                <Heading3>Julaften</Heading3>
-                <Paragraph className="point-time">
-                    <ClockIcon inline size={16} /> 00:00
-                </Paragraph>
-                <Paragraph className="platform">Platform: Nordpolen 🎅</Paragraph>
+                <Heading3>🎄 Julaften</Heading3>
                 </div>
 
 
@@ -171,71 +167,41 @@ function App() {
 
 
         </div>
-        <div>
 
+        <Contrast className="journey-footer">
+            <img src={ticketSvg} alt="ticket" className="ticket-illustration" />
 
-
-
-
-
-
-
-              <div className="journey-message">
-                {timeLeft.days === 0 && timeLeft.hours < 1 ? (
-                  <Paragraph className="urgent-message">
-                    🎅 Polar Express avgår snart! Kom deg ombord! 🎄
-                  </Paragraph>
-                ) : timeLeft.days === 0 ? (
-                  <Paragraph className="soon-message">
-                    🎁 I dag avgår Polar Express til julaften! 🎁
-                  </Paragraph>
-                ) : timeLeft.days === 1 ? (
-                  <Paragraph className="tomorrow-message">
-                    ⭐ Bare én dag til avgang! ⭐
-                  </Paragraph>
-                ) : (
-                  <Paragraph className="normal-message">
-                    ❄️ Husk å bestille billett til Polar Express! ❄️
-                  </Paragraph>
-                )}
-              </div>
-
-          {/* Action Buttons */}
-          <div className="action-buttons">
-            <PrimaryButton className="book-button">
-              Bestill billett til Polar Express
-            </PrimaryButton>
-            <SecondaryButton className="share-button">
-              Del reise
-            </SecondaryButton>
-          </div>
-
-          {/* Journey Info Cards */}
-          <div className="info-cards">
-            <NavigationCard
-              title="Om Polar Express"
-              titleIcon={<TrainIcon size={24} />}
-              className="info-card"
+            <RadioGroup
+                name="ticket-type"
+                onChange={e => setValue(e.target.value)}
+                value={value}
             >
-              En magisk reise fra Entur kontor til julaften. Nyt komfort,
-              god mat og drikke mens du glir avgårde mot julens under.
-            </NavigationCard>
-
-            <NavigationCard
-              title="Hva du trenger"
-              titleIcon={<CalendarIcon size={24} />}
-              className="info-card"
-            >
-              Husk å ta med julekosekort, pakkekort og mange smil!
-              Billetten er gyldig for alle med julestemning.
-            </NavigationCard>
-          </div>
+                <div style={{ display: 'grid', gridGap: '0.5rem' }}>
+                    <RadioPanel
+                        className="radio-panel"
+                        title="Standard"
+                        secondaryLabel="199,-"
+                        value="non-flexi"
+                        size="large"
+                    >
+                        En magisk reise fra Entur kontor til julaften. Nyt komfort,
+                        god mat og drikke mens du glir avgårde mot julens under.
+                    </RadioPanel>
+                    <RadioPanel
+                        className="radio-panel"
+                        title="Premium"
+                        secondaryLabel="299,-"
+                        value="flexi"
+                        size="large"
+                    >
+                        Husk å ta med julekosekort, pakkekort og mange smil!
+                        Billetten er gyldig for alle med julestemning.
+                    </RadioPanel>
+                </div>
+            </RadioGroup>
+        </Contrast>
         </div>
 
-        <footer className="footer">
-          <Paragraph>Entur AS · Juletog 2025 · God jul! 🎄✨</Paragraph>
-        </footer>
-    </div>
   );
 }
 

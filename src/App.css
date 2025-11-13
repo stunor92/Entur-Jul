@@ -1,5 +1,6 @@
 @import '@entur/travel/dist/styles.css';
 @import '@entur/icons/dist/styles.css';
+@import '@entur/form/dist/styles.css';
 :root {
   /* Entur official color palette */
   --entur-blue: #181C56;
@@ -23,8 +24,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
   background: var(--entur-bg);
 }
 
@@ -33,206 +32,89 @@ body {
   background: var(--entur-bg);
 }
 
-
-
-.entur-logo {
-  color: var(--entur-blue);
+/* Header & Footer sections */
+.journey-header,
+.journey-footer {
+  background: var(--entur-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 20px;
-}
-.journey-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 100px 50px 16px;
-}
-
-.journey-timespan {
-    display: flex;
-    flex-direction: column;
-}
-
-.timespan-spacer {
-    flex: 1;
-}
-
-.journey-spacer {
-    display: block;
-    height: 100px;
-}
-
-.journey-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/* Journey Header */
 .journey-header {
-    background: var(--entur-blue);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 100px 50px 16px;
+  padding: 100px 50px 16px;
 }
 
-/* Journey Card */
-.journey-card {
-  background: var(--entur-white);
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.journey-footer {
+  padding-bottom: 1000px;
 }
 
-.journey-summary {
+/* Images / simple assets */
+.city-illustration {
+  max-width: 600px;
   width: 100%;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 2px solid var(--entur-light-gray);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.summary-time {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-}
-
-.time-block {
-  text-align: center;
-}
-
-.departure-time,
-.arrival-time {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--entur-blue);
-  margin-bottom: 8px;
-}
-
-.time-label {
-  color: var(--entur-gray);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.duration-block {
-  flex: 1;
-  text-align: center;
-  padding: 0 24px;
-}
-
-.duration-label {
-  color: var(--entur-gray);
-  font-size: 0.875rem;
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-
-
-
-
-
-
-
-/* Leg Details */
-.leg-details {
+  height: auto;
   margin-top: 24px;
 }
 
-.leg-timeline {
-  position: relative;
+.ticket-illustration {
+    width: 200px;
 }
 
-.leg-point {
+
+
+.clock {
+  width: auto;
+  height: 100px;
+}
+
+.ticket {
+  width: 120px;
+  height: auto;
+}
+
+/* Radio panels */
+.radio-panel {
+  width: 400px;
+}
+
+/* Journey section */
+.journey-content {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-}
-
-.point-marker {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--entur-blue);
-  border: 3px solid var(--entur-white);
-  box-shadow: 0 0 0 2px var(--entur-blue);
-  flex-shrink: 0;
-  margin-top: 8px;
-}
-
-.point-info {
-  flex: 1;
-}
-
-.point-info h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--entur-dark-gray);
-  margin-bottom: 8px;
-}
-
-.point-time {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--entur-gray);
-  font-size: 0.875rem;
-  margin-bottom: 4px;
-}
-
-.platform {
-  color: var(--entur-gray);
-  font-size: 0.875rem;
-}
-
-.leg-line-container {
-  display: flex;
-  gap: 20px;
-  margin: 16px 0;
-  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+  padding: 100px 16px;
 }
 
 .journey-leg {
-  height: 500px;
+  height: 400px;
+}
+
+.journey-timespan {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.journey-spacer {
+  display: block;
+  height: 100px;
+}
+
+.point-info {
+  color: var(--entur-dark-gray);
 }
 
 .leg-info {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px 0;
+  padding: 0 0 16px;
 }
 
-.train-details-tag {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.train-name {
-  font-weight: 600;
-  font-size: 1.125rem;
-}
-
+/* Amenities */
 .amenities {
   display: flex;
   gap: 24px;
@@ -251,27 +133,16 @@ body {
   font-weight: 500;
 }
 
-/* Countdown Banner */
+/* Countdown */
 .countdown {
-    color: var(--entur-red);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 100px 50px 16px;
+  color: var(--entur-red);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 100px 50px 16px;
 }
-
-
-
-.banner-icon {
-  color: var(--entur-white);
-  flex-shrink: 0;
-}
-
-
-
-
 
 .time-unit {
   display: flex;
@@ -307,115 +178,30 @@ body {
   opacity: 0.8;
 }
 
-.journey-message {
+.christmas-banner {
   text-align: center;
-  margin-top: 24px;
+  padding: 80px 16px 32px;
 }
 
-.journey-message p {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.urgent-message {
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-
-/* Action Buttons */
-.action-buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.book-button,
-.share-button {
-  flex: 1;
-  min-width: 200px;
-  padding: 16px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-/* Info Cards */
-.info-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-}
-
-.info-card {
-  background: var(--entur-white);
-  border: 1px solid #E0E0E0;
-}
-
-/* Footer */
-.footer {
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid #E0E0E0;
-  text-align: center;
-}
-
-.footer p {
-  color: var(--entur-gray);
-  font-size: 0.875rem;
-}
-
-/* Animations */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes celebration {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* Responsive Design */
+/* Responsive tweaks */
 @media (max-width: 768px) {
-  .header-title {
-    font-size: 1.5rem;
+  .journey-header {
+    padding: 72px 24px 16px;
   }
 
-  .entur-logo {
-    width: 80px;
-  }
-
-  .journey-card {
-    padding: 20px;
-  }
-
-  .summary-time {
+  .journey-content {
     flex-direction: column;
-    gap: 16px;
+    padding: 48px 16px;
   }
 
-  .duration-block {
-    padding: 16px 0;
-    order: -1;
+  .journey-leg {
+    height: 300px;
   }
 
-  .countdown-mini {
-    font-size: 1.25rem;
+  .countdown {
+    padding: 64px 16px 16px;
+    flex-wrap: wrap;
   }
-
-  .leg-line-container {
-    flex-direction: column;
-  }
-
-
-
 
   .time-unit {
     min-width: 70px;
@@ -426,39 +212,12 @@ body {
     font-size: 1.75rem;
   }
 
-  .action-buttons {
-    flex-direction: column;
-  }
-
-  .book-button,
-  .share-button {
+  .journey-footer .radio-panel {
     width: 100%;
-  }
-
-  .info-cards {
-    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .header-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .header-title {
-    font-size: 1.25rem;
-  }
-
-  .station-name {
-    font-size: 1.25rem;
-  }
-
-  .departure-time,
-  .arrival-time {
-    font-size: 2rem;
-  }
-
   .time-unit {
     min-width: 60px;
     padding: 10px 12px;
@@ -470,5 +229,9 @@ body {
 
   .label {
     font-size: 0.625rem;
+  }
+
+  .journey-leg {
+    height: 240px;
   }
 }
